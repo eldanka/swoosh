@@ -1,9 +1,9 @@
-package org.zenmasters.swoosh
+package org.zenmasters.swoosh.Controller
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_welcome.*
+import org.zenmasters.swoosh.R
 
 class WelcomeActivity : BaseActivity() {
 
