@@ -5,38 +5,38 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_skill.*
-import org.zenmasters.swoosh.Utilities.EXTRA_LEAGUE
+import org.zenmasters.swoosh.Model.Player
 import org.zenmasters.swoosh.R
-import org.zenmasters.swoosh.Utilities.EXTRA_SKILL
+import org.zenmasters.swoosh.Utilities.EXTRA_PLAYER
+
 
 class SkillActivity : BaseActivity() {
 
-    var league = ""
-    var skill = ""
+    lateinit var player : Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill)
 
-        league = intent.getStringExtra(EXTRA_LEAGUE)
-    }
-
-    fun onBeginnerClicked(view: View){
-        ballerSkillBtn.isChecked = false
-        skill = "beginner"
+        player = intent.getParcelableExtra(EXTRA_PLAYER)
     }
 
     fun onBallerClicked(view: View){
         beginnerSkillBtn.isChecked = false
-        skill = "baller"
+        player.skill = "baller"
+    }
+
+    fun onBeginnerClicked(view: View){
+        ballerSkillBtn.isChecked = false
+        player.skill = "beginner"
     }
 
 
+
     fun onSkillFinishClicked(view: View){
-        if( skill != ""){
+        if( player.skill != ""){
             val finishActivity = Intent(this, FinishActivity::class.java)
-            finishActivity.putExtra(EXTRA_LEAGUE, league)
-            finishActivity.putExtra(EXTRA_SKILL, skill)
+            finishActivity.putExtra(EXTRA_PLAYER, player)
             startActivity(finishActivity)
         }
         else{
